@@ -17,6 +17,10 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<org.jooq.version>3.12.1</org.jooq.version>
+		<db.driver>org.h2.Driver</db.driver>
+		<db.password>sa</db.password>
+		<db.url>jdbc:h2:file:./demo</db.url>
+		<db.username>sa</db.username>
 	</properties>
 
 	<dependencies>
