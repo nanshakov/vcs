@@ -1,6 +1,8 @@
 package com.nanshakov.vcs2.controllers;
 
 import com.nanshakov.vcs2.services.Auth;
+import com.vk.api.sdk.exceptions.ApiException;
+import com.vk.api.sdk.exceptions.ClientException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +23,17 @@ public class ApiController {
     private Auth auth;
 
     @PostMapping("/api/start")
-    public static String start(@RequestBody List<String> body, HttpServletResponse response) {
-//        body.forEach(l -> ProcessingCache.getInstance().push(gKey, new ProcessingStatusDto(gKey, l)));
+    public String start(@RequestBody List<String> body, HttpServletResponse response) {
         return "getProcessing";
     }
 
-    @GetMapping("/api/getResult")
-    public static Map getResult(String gKey, HttpServletResponse response) {
-        //return Collections.singletonMap("response", ProcessingCache.getInstance().get(gKey));
+    @GetMapping("/api/result")
+    public Map getResult(HttpServletResponse response) {
         return new HashMap();
+    }
+
+    @GetMapping("/api/token")
+    public String getToken(HttpServletResponse response) throws ClientException, ApiException {
+        return auth.getToken(auth.getCode());
     }
 }

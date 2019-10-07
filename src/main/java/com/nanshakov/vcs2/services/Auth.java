@@ -27,8 +27,8 @@ public class Auth {
     String redirectUrl;
     private String token;
 
-    String getCode() {
-        return "55cd599cd21af55545";
+    public String getCode() {
+        return "0abe6ef52882245d05";
     }
 
     public String getToken(String code) throws ClientException, ApiException {
